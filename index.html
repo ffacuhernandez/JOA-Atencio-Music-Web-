@@ -34,12 +34,14 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
+                        display: ['Lora', 'serif'], // Cambiado a Lora para un look más orgánico
                     },
                     colors: {
-                        'brand-dark': '#050816',
-                        'brand-primary': '#a855f7', // Violeta/Magenta
-                        'brand-secondary': '#22d3ee', // Cian/Turquesa
+                        // Paleta nueva: Naranja, Verde, Madera/Crema
+                        'brand-light': '#fdfaf6', // Fondo principal (Crema/Beige)
+                        'brand-dark': '#3f3222',  // Texto principal (Marrón oscuro / "Madera")
+                        'brand-primary': '#ea580c', // Naranja (orange-600)
+                        'brand-secondary': '#16a34a', // Verde (green-600)
                     },
                     animation: {
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
@@ -63,26 +65,26 @@
     <!-- Importar Fuentes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Lora:wght@500;700&display=swap" rel="stylesheet">
 
     <!-- Estilos CSS personalizados -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #050816;
-            color: #e0e0e0;
+            background-color: #fdfaf6; /* Fondo Crema */
+            color: #3f3222; /* Texto Marrón Oscuro */
         }
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Space Grotesk', sans-serif;
+            font-family: 'Lora', serif; /* Fuente Serif para títulos */
             font-weight: 700;
         }
         
         /* Estilo para el fondo del Hero con degradado */
         .hero-bg {
-            background-color: #050816;
+            background-color: #fdfaf6; /* Fondo Crema */
             background-image: 
-                radial-gradient(at 20% 10%, hsla(263, 70%, 25%, 0.3) 0px, transparent 50%),
-                radial-gradient(at 80% 90%, hsla(188, 78%, 30%, 0.25) 0px, transparent 50%);
+                radial-gradient(at 20% 10%, hsla(28, 80%, 70%, 0.2) 0px, transparent 50%), /* Tinte naranja sutil */
+                radial-gradient(at 80% 90%, hsla(140, 50%, 70%, 0.15) 0px, transparent 50%); /* Tinte verde sutil */
             position: relative;
             overflow: hidden;
         }
@@ -92,10 +94,10 @@
             position: sticky;
             top: 0;
             z-index: 50;
-            background-color: rgba(5, 8, 22, 0.8);
+            background-color: rgba(253, 250, 246, 0.8); /* Fondo Crema translúcido */
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(168, 85, 247, 0.1);
+            border-bottom: 1px solid rgba(234, 88, 12, 0.1); /* Borde Naranja sutil */
         }
 
         /* Botón CTA principal */
@@ -106,13 +108,13 @@
         
         /* Botón CTA secundario */
         .cta-button-secondary {
-            @apply px-6 py-3 rounded-lg font-bold text-white bg-transparent border-2 border-brand-secondary shadow-lg shadow-brand-secondary/20 transition-all duration-300 ease-in-out;
-            @apply hover:bg-brand-secondary hover:text-brand-dark hover:shadow-xl hover:shadow-brand-secondary/40 hover:-translate-y-0.5;
+            @apply px-6 py-3 rounded-lg font-bold text-brand-secondary border-2 border-brand-secondary shadow-lg shadow-brand-secondary/20 transition-all duration-300 ease-in-out;
+            @apply hover:bg-brand-secondary hover:text-white hover:shadow-xl hover:shadow-brand-secondary/40 hover:-translate-y-0.5;
         }
         
         /* Tarjetas de Servicio */
         .service-card {
-            @apply bg-gray-900/50 border border-gray-800 rounded-2xl p-6 transition-all duration-300 ease-in-out overflow-hidden relative;
+            @apply bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 ease-in-out overflow-hidden relative shadow-lg;
             @apply hover:border-brand-primary/80 hover:shadow-2xl hover:shadow-brand-primary/20 hover:-translate-y-1;
         }
         .service-card::before {
@@ -122,7 +124,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(168, 85, 247, 0.1), transparent 40%);
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(234, 88, 12, 0.05), transparent 40%); /* Tinte naranja hover */
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -143,33 +145,33 @@
     </style>
 </head>
 
-<body class="bg-brand-dark text-gray-300 antialiased">
+<body class="bg-brand-light text-brand-dark antialiased">
 
     <!-- ===== HEADER / NAVBAR ===== -->
     <header id="header">
         <nav class="container mx-auto max-w-7xl px-6 py-4 flex justify-between items-center">
             <!-- Logo / Nombre Artístico -->
-            <a href="#inicio" class="text-2xl font-bold text-white font-display transition-colors hover:text-brand-primary">
+            <a href="#inicio" class="text-2xl font-bold text-brand-dark font-display transition-colors hover:text-brand-primary">
                 JOA Atencio
             </a>
 
             <!-- Navbar Desktop -->
             <div class="hidden md:flex space-x-8">
-                <a href="#sobre-mi" class="text-gray-300 hover:text-brand-primary transition-colors">Sobre mí</a>
-                <a href="#servicios" class="text-gray-300 hover:text-brand-primary transition-colors">Servicios</a>
-                <a href="#musica" class="text-gray-300 hover:text-brand-primary transition-colors">Música</a>
-                <a href="#contacto" class="text-gray-300 hover:text-brand-primary transition-colors">Contacto</a>
+                <a href="#sobre-mi" class="text-gray-700 hover:text-brand-primary transition-colors">Sobre mí</a>
+                <a href="#servicios" class="text-gray-700 hover:text-brand-primary transition-colors">Servicios</a>
+                <a href="#musica" class="text-gray-700 hover:text-brand-primary transition-colors">Música</a>
+                <a href="#contacto" class="text-gray-700 hover:text-brand-primary transition-colors">Contacto</a>
             </div>
 
             <!-- Botón de Menú Móvil (Hamburguesa) -->
             <button id="menu-btn" class="md:hidden z-50">
-                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
-                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white hidden"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-dark"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+                <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-dark hidden"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
             </button>
         </nav>
 
         <!-- Navbar Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full min-h-screen bg-brand-dark/95 backdrop-blur-xl flex flex-col justify-center items-center space-y-8 text-2xl z-40">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full min-h-screen bg-brand-light/95 backdrop-blur-xl flex flex-col justify-center items-center space-y-8 text-2xl z-40">
             <a href="#inicio" class_name="mobile-menu-link">Inicio</a>
             <a href="#sobre-mi" class="mobile-menu-link">Sobre mí</a>
             <a href="#servicios" class="mobile-menu-link">Servicios</a>
@@ -194,7 +196,7 @@
                 </div>
                 -->
 
-                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white font-display animate-fade-in" style="animation-delay: 0.4s;">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-brand-dark font-display animate-fade-in" style="animation-delay: 0.4s;">
                     JOA Atencio
                 </h1>
                 
@@ -202,7 +204,7 @@
                     Compositor, Productor y Baterista
                 </p>
                 
-                <p class="text-lg md:text-xl text-gray-300 max-w-2xl mt-6 animate-fade-in" style="animation-delay: 0.8s;">
+                <p class="text-lg md:text-xl text-gray-700 max-w-2xl mt-6 animate-fade-in" style="animation-delay: 0.8s;">
                     "La vida son solo momentos. De los detalles, pocos se acuerdan. Pero yo, enamorado de la vida y sus detalles, convertí cada uno en canción."
                 </p>
 
@@ -219,35 +221,35 @@
             <!-- Indicador de Scroll -->
             <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
                 <a href="#sobre-mi" aria-label="Ir a la sección Sobre mí">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white w-6 h-6"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-dark w-6 h-6"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg>
                 </a>
             </div>
         </section>
 
 
         <!-- ===== 2) SECCIÓN "SOBRE MÍ" ===== -->
-        <section id="sobre-mi" class="py-20 md:py-32 bg-brand-dark">
+        <section id="sobre-mi" class="py-20 md:py-32 bg-white">
             <div class="container mx-auto max-w-7xl px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
                     
                     <!-- Columna de Imagen -->
                     <div class="reveal">
-                        <img src="https://placehold.co/600x600/1f2937/a855f7?text=JOA+Atencio" 
+                        <img src="https://placehold.co/600x600/eaddc1/3f3222?text=JOA+Atencio" 
                              alt="Retrato artístico de JOA Atencio"
                              class="rounded-2xl shadow-2xl aspect-square object-cover shadow-brand-primary/20"
-                             onerror="this.src='https://placehold.co/600x600/1f2937/a855f7?text=JOA+Atencio'; this.onerror=null;">
+                             onerror="this.src='https://placehold.co/600x600/eaddc1/3f3222?text=JOA+Atencio'; this.onerror=null;">
                     </div>
 
                     <!-- Columna de Texto -->
                     <div class="reveal">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                        <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6">
                             Quién Soy
                         </h2>
                         
-                        <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                        <p class="text-lg text-gray-700 mb-6 leading-relaxed">
                             Soy JOA Atencio, un artista de Rock originario de Paraná, Entre Ríos (Argentina). Mi música nace de una fascinación por los detalles de la vida, esos momentos que muchos pasan por alto pero que para mí son la esencia de todo.
                         </C>
-                        <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
                             Convierto historias, sentimientos y observaciones en canciones. Cada letra es una crónica, cada melodía un paisaje. Mi enfoque combina la energía cruda del rock con una sensibilidad lírica, buscando conectar a un nivel auténtico y profundo.
                         </p>
 
@@ -261,7 +263,7 @@
                             <span class="bg-brand-secondary/20 text-brand-secondary font-medium py-2 px-4 rounded-full">
                                 Baterista
                             </span>
-                            <span class="bg-gray-700/50 text-gray-300 font-medium py-2 px-4 rounded-full">
+                            <span class="bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-full">
                                 Rock
                             </span>
                         </div>
@@ -272,13 +274,13 @@
         </section>
 
         <!-- ===== 3) SECCIÓN "SERVICIOS" ===== -->
-        <section id="servicios" class="py-20 md:py-32 bg-gray-900/30" style="background-image: radial-gradient(at 50% 0%, hsla(263, 70%, 25%, 0.15) 0px, transparent 50%);">
+        <section id="servicios" class="py-20 md:py-32 bg-brand-light" style="background-image: radial-gradient(at 50% 0%, hsla(28, 80%, 70%, 0.1) 0px, transparent 50%);">
             <div class="container mx-auto max-w-7xl px-6">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">
                         Lo Que Hago
                     </h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Mi pasión es crear música desde cero. Ofrezco mi experiencia en cada etapa del proceso creativo para dar vida a tu visión.
                     </p>
                 </div>
@@ -290,11 +292,11 @@
                         <div class="mb-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-primary"><path d="M9 18V5l12-2v13M9 18a4 4 0 0 0-4 4"></path><path d="m9 10 12-2"></path><path d="M21 18a4 4 0 0 0-4 4"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Composición</h3>
-                        <p class="text-gray-400 mb-6">
+                        <h3 class="text-2xl font-bold text-brand-dark mb-4">Composición</h3>
+                        <p class="text-gray-600 mb-6">
                             Transformo ideas abstractas en canciones completas. Desde una melodía inicial hasta letras y estructuras armónicas, creo la identidad musical de tu proyecto.
                         </p>
-                        <ul class="space-y-2 text-gray-300">
+                        <ul class="space-y-2 text-gray-700">
                             <li class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-brand-secondary"><path d="M5 12l5 5l10 -10"></path></svg>
                                 Composición de canciones desde cero.
@@ -315,11 +317,11 @@
                         <div class="mb-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-primary"><path d="M16 18H8"></path><path d="M12 14v4"></path><path d="M12 4v7"></path><path d="M10 7h4"></path><path d="M10 4h4"></path><path d="M12 11a5 5 0 0 0-5 5v3h10v-3a5 5 0 0 0-5-5Z"></path><path d="M21 12a9 9 0 0 0-9-9 9 9 0 0 0-9 9"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Producción</h3>
-                        <p class="text-gray-400 mb-6">
+                        <h3 class="text-2xl font-bold text-brand-dark mb-4">Producción</h3>
+                        <p class="text-gray-600 mb-6">
                             Llevo tus maquetas al siguiente nivel. Me encargo de los arreglos, la instrumentación y la atmósfera general para que tu canción suene profesional y pulida.
                         </p>
-                        <ul class="space-y-2 text-gray-300">
+                        <ul class="space-y-2 text-gray-700">
                             <li class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-brand-secondary"><path d="M5 12l5 5l10 -10"></path></svg>
                                 Producción integral o co-producción.
@@ -340,11 +342,11 @@
                         <div class="mb-5">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-primary"><path d="M12 12H8"></path><path d="M16 12h-4"></path><path d="m14 16-1.17 2.34"></path><path d="M10 16l1.17 2.34"></path><path d="M21 8a8.4 8.4 0 0 0-1.42-4.55"></path><path d="M3 8a8.4 8.4 0 0 1 1.42-4.55"></path><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="2"></circle></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-white mb-4">Batería</h3>
-                        <p class="text-gray-400 mb-6">
+                        <h3 class="text-2xl font-bold text-brand-dark mb-4">Batería</h3>
+                        <p class="text-gray-600 mb-6">
                             El ritmo es el corazón de la canción. Grabo baterías (acústicas y electrónicas) con el groove y la energía que tu proyecto necesita, ya sea en estudio o de forma remota.
                         </p>
-                        <ul class="space-y-2 text-gray-300">
+                        <ul class="space-y-2 text-gray-700">
                             <li class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="text-brand-secondary"><path d="M5 12l5 5l10 -10"></path></svg>
                                 Grabación de baterías acústicas y electrónicas.
@@ -365,13 +367,13 @@
         </section>
 
         <!-- ===== 4) SECCIÓN "MÚSICA / PROYECTOS" ===== -->
-        <section id="musica" class="py-20 md:py-32 bg-brand-dark">
+        <section id="musica" class="py-20 md:py-32 bg-white">
             <div class="container mx-auto max-w-7xl px-6">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">
                         Música & Proyectos
                     </h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Aquí puedes escuchar algunos de mis trabajos recientes, donde he participado como compositor, productor o baterista.
                     </p>
                 </div>
@@ -380,7 +382,7 @@
                     
                     <!-- Proyecto 1 (YouTube Embed) -->
                     <div class="reveal">
-                        <div class="aspect-video rounded-lg overflow-hidden shadow-xl shadow-brand-secondary/10 border border-gray-800">
+                        <div class="aspect-video rounded-lg overflow-hidden shadow-xl shadow-brand-secondary/10 border border-gray-200">
                             <!-- Ejemplo de YouTube - Reemplaza 'VIDEO_ID' con el ID de tu video -->
                             <iframe class="w-full h-full" 
                                     src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
@@ -391,18 +393,18 @@
                             </iframe>
                         </div>
                         <div class="mt-4">
-                            <h3 class="text-xl font-bold text-white">Nombre del Proyecto/Tema 1</h3>
+                            <h3 class="text-xl font-bold text-brand-dark">Nombre del Proyecto/Tema 1</h3>
                             <p class="text-brand-secondary">Rol: Producción, Composición</p>
                             <div class="flex flex-wrap gap-2 mt-2">
-                                <span class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Rock</span>
-                                <span class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Indie</span>
+                                <span class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Rock</span>
+                                <span class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Indie</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Proyecto 2 (Spotify Embed) -->
                     <div class="reveal">
-                        <div class="rounded-lg overflow-hidden shadow-xl shadow-brand-primary/10 border border-gray-800">
+                        <div class="rounded-lg overflow-hidden shadow-xl shadow-brand-primary/10 border border-gray-200">
                             <!-- Ejemplo de Spotify - Reemplaza con tu enlace de embed -->
                             <iframe style="border-radius:12px" 
                                     src="https://open.spotify.com/embed/track/4cOdK2wGQAmt3UOSLVAKeJ?utm_source=generator" 
@@ -415,11 +417,11 @@
                             </iframe>
                         </div>
                          <div class="mt-4">
-                            <h3 class="text-xl font-bold text-white">Nombre del Proyecto/Tema 2</h3>
+                            <h3 class="text-xl font-bold text-brand-dark">Nombre del Proyecto/Tema 2</h3>
                             <p class="text-brand-primary">Rol: Batería, Arreglos</p>
                             <div class="flex flex-wrap gap-2 mt-2">
-                                <span class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Pop</span>
-                                <span class="text-xs bg-gray-700 text-gray-300 px-3 py-1 rounded-full">Acústico</span>
+                                <span class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Pop</span>
+                                <span class="text-xs bg-gray-200 text-gray-700 px-3 py-1 rounded-full">Acústico</span>
                             </div>
                         </div>
                     </div>
@@ -429,13 +431,13 @@
         </section>
 
         <!-- ===== 5) SECCIÓN "PROCESO DE TRABAJO" ===== -->
-        <section id="proceso" class="py-20 md:py-32 bg-gray-900/30">
+        <section id="proceso" class="py-20 md:py-32 bg-brand-light">
             <div class="container mx-auto max-w-7xl px-6">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">
                         Mi Proceso
                     </h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         Un enfoque claro y colaborativo para asegurar que tu visión se haga realidad, paso a paso.
                     </p>
                 </div>
@@ -443,21 +445,21 @@
                 <!-- Timeline / Pasos -->
                 <div class="relative max-w-4xl mx-auto">
                     <!-- Línea de conexión (solo visible en desktop) -->
-                    <div class="hidden md:block absolute left-1/2 top-5 h-[calc(100%-2.5rem)] w-0.5 bg-gray-700 -translate-x-1/2"></div>
+                    <div class="hidden md:block absolute left-1/2 top-5 h-[calc(100%-2.5rem)] w-0.5 bg-gray-300 -translate-x-1/2"></div>
                     
                     <!-- Línea de conexión (solo visible en mobile) -->
-                    <div class="md:hidden absolute left-5 top-0 h-full w-0.5 bg-gray-700"></div>
+                    <div class="md:hidden absolute left-5 top-0 h-full w-0.5 bg-gray-300"></div>
 
                     <!-- Paso 1 -->
                     <div class="relative md:flex md:items-center md:justify-start mb-12 reveal">
                         <div class="md:w-1/2 md:pr-10">
                             <div class="flex items-center gap-4 mb-4 md:mb-0">
                                 <div class="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-brand-primary text-white font-bold">1</div>
-                                <h3 class="md:hidden text-2xl font-bold text-white">Charla Inicial</h3>
+                                <h3 class="md:hidden text-2xl font-bold text-brand-dark">Charla Inicial</h3>
                             </div>
                             <div class="ml-10 md:ml-0 md:mt-4 md:text-right">
-                                <h3 class="hidden md:block text-2xl font-bold text-white mb-2">Charla Inicial</h3>
-                                <p class="text-gray-400">Todo comienza con una conversación. Escucho tu idea, tus referencias y los objetivos de tu proyecto para entender tu visión a fondo.</p>
+                                <h3 class="hidden md:block text-2xl font-bold text-brand-dark mb-2">Charla Inicial</h3>
+                                <p class="text-gray-600">Todo comienza con una conversación. Escucho tu idea, tus referencias y los objetivos de tu proyecto para entender tu visión a fondo.</p>
                             </div>
                         </div>
                         <div class="hidden md:block md:w-1/2"></div>
@@ -469,11 +471,25 @@
                         <div class="md:w-1/2 md:pl-10">
                             <div class="flex items-center gap-4 mb-4 md:mb-0">
                                 <div class="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-brand-primary text-white font-bold">2</div>
-                                <h3 class="md:hidden text-2xl font-bold text-white">Maquetas y Bocetos</h3>
+                                <h3 class="md:hidden text-2xl font-bold text-brand-dark">Maquetas y Bocetos</h3>
                             </div>
                              <div class="ml-10 md:ml-0 md:mt-4">
-                                <h3 class="hidden md:block text-2xl font-bold text-white mb-2">Maquetas y Bocetos</h3>
-                                <p class="text-gray-400">Creamos las primeras versiones (demos o maquetas) para definir la estructura, el tempo y la dirección de la canción antes de la producción final.</p>
+                                <h3 class="hidden md:block text-2xl font-bold text-brand-dark mb-2">Maquetas y Bocetos</h3>
+                                <p class="text-gray-600">Creamos las primeras versiones (demos o maquetas) para definir la estructura, el tempo y la dirección de la canción antes de la producción final.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Paso 3 -->
+                    <div class="relative md:flex md:items-center md:justify-start mb-12 reveal">
+                        <div class="md:w-1/2 md:pr-10">
+                            <div class="flex items-center gap-4 mb-4 md:mb-0">
+                                <div class="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-brand-primary text-white font-bold">3</div>
+                                <h3 class="md:hidden text-2xl font-bold text-brand-dark">Producción y Grabación</h3>
+                            </div>
+                            <div class="ml-10 md:ml-0 md:mt-4 md:text-right">
+                                <h3 class="hidden md:block text-2xl font-bold text-brand-dark mb-2">Producción y Grabación</h3>
+                                <p class="text-gray-600">Es hora de grabar. Añadimos instrumentos, grabamos voces, baterías y todos los arreglos necesarios para construir el sonido completo.</p>
                             </div>
                         </div>
                     </div>
@@ -499,11 +515,11 @@
                         <div class="md:w-1/2 md:pl-10">
                             <div class="flex items-center gap-4 mb-4 md:mb-0">
                                 <div class="relative z-10 w-10 h-10 flex items-center justify-center rounded-full bg-brand-primary text-white font-bold">4</div>
-                                <h3 class="md:hidden text-2xl font-bold text-white">Revisión y Entrega</h3>
+                                <h3 class="md:hidden text-2xl font-bold text-brand-dark">Revisión y Entrega</h3>
                             </div>
                              <div class="ml-10 md:ml-0 md:mt-4">
-                                <h3 class="hidden md:block text-2xl font-bold text-white mb-2">Revisión y Entrega</h3>
-                                <p class="text-gray-400">Pulimos los detalles finales. Revisamos juntos el resultado y, una vez aprobado, te entrego los archivos finales en alta calidad.</p>
+                                <h3 class="hidden md:block text-2xl font-bold text-brand-dark mb-2">Revisión y Entrega</h3>
+                                <p class="text-gray-600">Pulimos los detalles finales. Revisamos juntos el resultado y, una vez aprobado, te entrego los archivos finales en alta calidad.</p>
                             </div>
                         </div>
                     </div>
@@ -513,34 +529,34 @@
         </section>
 
         <!-- ===== 6) SECCIÓN "TESTIMONIOS" (Placeholder) ===== -->
-        <section id="testimonios" class="py-20 md:py-32 bg-brand-dark">
+        <section id="testimonios" class="py-20 md:py-32 bg-white">
             <div class="container mx-auto max-w-7xl px-6">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                    <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">
                         Lo que dicen de mí
                     </h2>
-                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">
+                    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
                         (Próximamente: Testimonios de artistas y colaboradores)
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Testimonio Placeholder 1 -->
-                    <div class="bg-gray-900/50 border border-gray-800 p-6 rounded-lg reveal">
+                    <div class="bg-brand-light border border-gray-200 p-6 rounded-lg reveal shadow-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-primary mb-4"><path d="M3 21v-4a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v4"></path><path d="M21 17a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-2Z"></path><path d="M7 17a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-2Z"></path></svg>
-                        <p class="text-lg italic text-gray-300 mb-4">
+                        <p class="text-lg italic text-gray-700 mb-4">
                             "Un texto de testimonio increíble irá aquí. JOA fue extremadamente profesional y capturó exactamente el sonido que buscaba para mi EP."
                         </p>
-                        <p class="font-bold text-white">Artista Colaborador</p>
+                        <p class="font-bold text-brand-dark">Artista Colaborador</p>
                         <p class="text-sm text-brand-secondary">Cantante / Compositor</p>
                     </div>
                     <!-- Testimonio Placeholder 2 -->
-                    <div class="bg-gray-900/50 border border-gray-800 p-6 rounded-lg reveal">
+                    <div class="bg-brand-light border border-gray-200 p-6 rounded-lg reveal shadow-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-primary mb-4"><path d="M3 21v-4a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v4"></path><path d="M21 17a2 2 0 0 0-2-2h-1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-2Z"></path><path d="M7 17a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2v-2Z"></path></svg>
-                        <p class="text-lg italic text-gray-300 mb-4">
+                        <p class="text-lg italic text-gray-700 mb-4">
                             "Los grooves de batería que grabó JOA le dieron vida a mis canciones. Un baterista de sesión increíblemente versátil."
-                        </p>
-                        <p class="font-bold text-white">Productor Musical</p>
+                        </g>
+                        <p class="font-bold text-brand-dark">Productor Musical</p>
                         <p class="text-sm text-brand-secondary">Productor / Ingeniero de Mezcla</p>
                     </div>
                 </div>
@@ -548,16 +564,16 @@
         </section>
 
         <!-- ===== 7) SECCIÓN "CONTACTO" ===== -->
-        <section id="contacto" class="py-20 md:py-32" style="background-image: radial-gradient(at 100% 100%, hsla(188, 78%, 30%, 0.2) 0px, transparent 50%);">
+        <section id="contacto" class="py-20 md:py-32 bg-brand-light" style="background-image: radial-gradient(at 100% 100%, hsla(140, 50%, 70%, 0.15) 0px, transparent 50%);">
             <div class="container mx-auto max-w-7xl px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
                     
                     <!-- Columna de Texto y Redes -->
                     <div class="reveal">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                        <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-6">
                             Trabajemos Juntos
                         </h2>
-                        <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                        <p class="text-lg text-gray-700 mb-8 leading-relaxed">
                             ¿Tienes un proyecto en mente? ¿Necesitas un compositor, productor o baterista para tu próxima canción?
                             <br><br>
                             Estoy disponible para colaboraciones, sesiones de grabación y proyectos de producción. Cuéntame tu idea y la haremos realidad.
@@ -572,16 +588,16 @@
 
                         <!-- Redes Sociales -->
                         <div class="flex space-x-5">
-                            <a href="https://www.instagram.com/joaquiatencio/" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-primary transition-colors" aria-label="Instagram">
+                            <a href="https://www.instagram.com/joaquiatencio/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-primary transition-colors" aria-label="Instagram">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                             </a>
-                            <a href="https://www.youtube.com/channel/UCESQnIuQA61mgO5TnoIAzrw" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-primary transition-colors" aria-label="YouTube">
+                            <a href="https://www.youtube.com/channel/UCESQnIuQA61mgO5TnoIAzrw" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-primary transition-colors" aria-label="YouTube">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"></path><path d="m10 15 5-3-5-3z"></path></svg>
                             </a>
-                            <a href="https://www.tiktok.com/@joaquiatencio" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-primary transition-colors" aria-label="TikTok">
+                            <a href="https://www.tiktok.com/@joaquiatencio" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-primary transition-colors" aria-label="TikTok">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a5 5 0 0 0-5-5h-3a5 5 0 0 0-5 5v8a5 5 0 0 0 5 5h3a5 5 0 0 0 5-5Z"></path><path d="M11 12a2 2 0 1 0 0-4h2v4a2 2 0 1 1 0 4h-2v-4Z"></path></svg>
                             </a>
-                            <a href="https://music.apple.com/ar/artist/joa-atencio/1685575161" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-brand-primary transition-colors" aria-label="Apple Music">
+                            <a href="https://music.apple.com/ar/artist/joa-atencio/1685575161" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-brand-primary transition-colors" aria-label="Apple Music">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 12c-1.657 0-3-2.239-3-5s1.343-5 3-5 3 2.239 3 5-1.343 5-3 5Z"></path><path d="M12 12c1.657 0 3 2.239 3 5s-1.343 5-3 5-3-2.239-3-5 1.343-5 3-5Z"></path></svg>
                             </a>
                         </div>
@@ -590,33 +606,33 @@
                     <!-- Columna de Formulario -->
                     <div class="reveal">
                         <!-- Mensaje de Éxito (oculto por defecto) -->
-                        <div id="form-success" class="hidden p-4 mb-4 text-center bg-green-900/50 border border-green-500 text-green-300 rounded-lg">
+                        <div id="form-success" class="hidden p-4 mb-4 text-center bg-green-100 border border-green-300 text-green-800 rounded-lg">
                             <p class="font-bold">¡Mensaje enviado!</p>
                             <p>Gracias por contactarme. Te responderé a la brevedad.</p>
                         </div>
                         
                         <!-- Mensaje de Error (oculto por defecto) -->
-                        <div id="form-error" class="hidden p-4 mb-4 text-center bg-red-900/50 border border-red-500 text-red-300 rounded-lg">
+                        <div id="form-error" class="hidden p-4 mb-4 text-center bg-red-100 border border-red-300 text-red-800 rounded-lg">
                             <p>Hubo un error. Por favor, revisa los campos.</p>
                         </div>
 
-                        <form id="contact-form" class="space-y-6 bg-gray-900/50 p-6 md:p-8 rounded-2xl border border-gray-800 shadow-xl">
+                        <form id="contact-form" class="space-y-6 bg-white p-6 md:p-8 rounded-2xl border border-gray-200 shadow-xl">
                             <div>
-                                <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Nombre</label>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nombre</label>
                                 <input type="text" id="name" name="name" required
-                                       class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors">
+                                       class="w-full bg-gray-100 border border-gray-300 rounded-lg px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors">
                             </div>
                             
                             <div>
-                                <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                                 <input type="email" id="email" name="email" required
-                                       class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors">
+                                       class="w-full bg-gray-100 border border-gray-300 rounded-lg px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors">
                             </div>
 
                             <div>
-                                <label for="service" class="block text-sm font-medium text-gray-300 mb-2">Tipo de Servicio</label>
+                                <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Tipo de Servicio</label>
                                 <select id="service" name="service" required
-                                        class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors appearance-none">
+                                        class="w-full bg-gray-100 border border-gray-300 rounded-lg px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors appearance-none">
                                     <option value="">Selecciona un servicio...</option>
                                     <option value="composicion">Composición</option>
                                     <option value="produccion">Producción</option>
@@ -626,9 +642,9 @@
                             </div>
 
                             <div>
-                                <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Mensaje</label>
+                                <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Mensaje</label>
                                 <textarea id="message" name="message" rows="5" required
-                                          class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors"></textarea>
+                                          class="w-full bg-gray-100 border border-gray-300 rounded-lg px-4 py-3 text-brand-dark focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-colors"></textarea>
                             </div>
 
                             <div>
@@ -645,17 +661,17 @@
     </main>
 
     <!-- ===== 8) FOOTER ===== -->
-    <footer class="bg-gray-900/50 border-t border-gray-800">
+    <footer class="bg-brand-light border-t border-gray-200">
         <div class="container mx-auto max-w-7xl px-6 py-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6">
                 
                 <!-- Nombre y Copyright -->
                 <div class="text-center md:text-left">
-                    <p class="font-bold text-white text-lg">JOA Atencio</p>
-                    <p class="text-sm text-gray-500">
+                    <p class="font-bold text-brand-dark text-lg">JOA Atencio</p>
+                    <p class="text-sm text-gray-600">
                         &copy; <span id="current-year"></span>. Todos los derechos reservados.
                     </p>
-                    <p class="text-sm text-gray-600 mt-1">Paraná, Entre Ríos, Argentina.</p>
+                    <p class="text-sm text-gray-500 mt-1">Paraná, Entre Ríos, Argentina.</p>
                 </div>
 
                 <!-- Redes Sociales Footer -->
